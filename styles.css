@@ -999,3 +999,74 @@ button[type='submit'] {
     left: 12px;
   }
 }
+/* ===== Match Guarantee + Lead Sections Size & Right Alignment ===== */
+
+.guarantee,
+.refined-lead {
+  width: min(1120px, 92vw);
+  min-height: 290px;
+  margin: 0 auto;
+  padding: 42px 48px;
+  text-align: right;
+}
+
+.guarantee {
+  grid-template-columns: 110px 1fr;
+}
+
+.refined-lead {
+  grid-template-columns: 110px 1fr;
+}
+
+.guarantee > div:not(.shield),
+.lead-content {
+  text-align: right;
+  align-items: flex-start;
+}
+
+.guarantee h2,
+.refined-lead h2,
+.guarantee p,
+.refined-lead p {
+  text-align: right;
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.guarantee-tags {
+  justify-content: flex-start;
+}
+
+.refined-lead form {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+.refined-lead input {
+  text-align: right;
+}
+
+.lead-icon,
+.shield {
+  order: -1;
+}
+
+@media (max-width: 768px) {
+  .guarantee,
+  .refined-lead {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 30px 22px;
+    text-align: right;
+  }
+
+  .lead-icon,
+  .shield {
+    margin-right: 0;
+    margin-left: auto;
+  }
+
+  .guarantee-tags {
+    justify-content: flex-start;
+  }
+}
