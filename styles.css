@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'Thmanyah';
+  src: url('assets/fonts/thmanyahsans-Medium.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 :root{--red:#cd171b;--dark:#070707;--panel:#111;--line:rgba(205,23,27,.55);--white:#f5f5f5;--muted:#bdbdbd}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#050505;color:var(--white);font-family:Tahoma,Arial,sans-serif;line-height:1.8;background-image:radial-gradient(circle at 20% 10%,rgba(205,23,27,.14),transparent 25%),linear-gradient(135deg,#050505,#111 55%,#030303)}
 a{color:inherit;text-decoration:none}.nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 42px;background:rgba(0,0,0,.72);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.08)}.brand-mini img{width:112px;display:block}.nav nav{display:flex;gap:24px;color:#ddd;font-size:14px}.nav-cta,.btn,button{border:1px solid var(--red);background:linear-gradient(135deg,#5b0709,var(--red));color:white;border-radius:3px;padding:10px 22px;font-weight:700;box-shadow:0 0 22px rgba(205,23,27,.22)}
