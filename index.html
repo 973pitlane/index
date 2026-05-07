@@ -127,44 +127,47 @@
         <p>
           نضمن لك الطباعة وقماش التيشرت لمدة ٦ شهور من تاريخ الاستلام. إذا ظهر تلف واضح بسبب عيب في الطباعة أو القماش، نعوضك حسب الحالة بعد المعاينة.
         </p>
-        <div class="guarantee-points">
-          <span>طباعة ثابتة</span>
-          <span>قماش مختار بعناية</span>
-          <span>تعويض حسب الحالة</span>
-        </div>
-      </div>
+        <div class="guarantee-tags">
+  <span>🖨️ طباعة ثابتة</span>
+  <span>👕 قماش مختار بعناية</span>
+  <span>🛡️ تعويض حسب الحالة</span>
+  <span>🎨 تصميمك الخاص لك فقط</span>
+</div>
     </section>
 
-    <section id="lead-form" class="section lead-box">
-      <div>
-        <span class="tag">العروض أول بأول</span>
-        <h2>سجّل إيميلك</h2>
-        <p>خلك أول من يعرف عن العروض، الدروبات، والتصاميم الجديدة.</p>
-      </div>
+    <section id="lead-form" class="section lead-box refined-lead">
+  <div class="lead-icon">✉</div>
 
-      <form 
-        action="https://docs.google.com/forms/d/e/1FAIpQLSeF3Fkpdti_UB3vdj-kIfFf-o5y0bDbKKQeVChRDGTRDf6hKw/formResponse"
-        method="POST"
-        target="hidden_iframe"
+  <div class="lead-content">
+    <span class="tag">العروض أول بأول</span>
+    <h2>سجّل إيميلك</h2>
+    <p>
+      خلك أول من يعرف عن العروض، الدروبات، والتصاميم الجديدة الخاصة بـ 973PITLANE.
+    </p>
+
+    <form 
+      action="https://docs.google.com/forms/d/e/1FAIpQLSeF3Fkpdti_UB3vdj-kIfFf-o5y0bDbKKQeVChRDGTRDf6hKw/formResponse"
+      method="POST"
+      target="hidden_iframe"
+      onsubmit="document.getElementById('form-success').style.display='block';"
+    >
+      <input 
+        type="email" 
+        name="entry.796910452" 
+        placeholder="اكتب إيميلك هنا" 
+        required
       >
-        <label class="sr-only" for="email">البريد الإلكتروني</label>
-        <input 
-          id="email"
-          type="email" 
-          name="entry.796910452" 
-          placeholder="اكتب إيميلك هنا" 
-          required
-        >
 
-        <button type="submit">سجّل الآن</button>
+      <button type="submit">سجّل الآن</button>
 
-        <p id="form-success" class="form-success" hidden>
-          تم تسجيل إيميلك بنجاح 🔥
-        </p>
-      </form>
+      <p id="form-success" class="form-success">
+        تم تسجيل إيميلك بنجاح 🔥
+      </p>
+    </form>
+  </div>
 
-      <iframe name="hidden_iframe" title="نموذج التسجيل" hidden></iframe>
-    </section>
+  <iframe name="hidden_iframe" style="display:none;"></iframe>
+</section>
 
     <section id="contact" class="section contact">
       <div class="section-title">
