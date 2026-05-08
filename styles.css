@@ -1634,177 +1634,64 @@ button[type='submit'] {
 }
 
 
-/* ===== FAQ Floating Popup ===== */
-.side-actions .faq-side-btn {
-  width: 46px;
-  height: 46px;
-  display: grid;
-  place-items: center;
-  border: 1px solid rgba(205,23,27,0.6);
-  border-radius: 15px;
-  background: rgba(8,8,8,0.88);
-  color: #fff;
-  font-size: 22px;
+/* ===== Hero CTA Upgrade ===== */
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 26px;
+}
+
+.hero-main-btn,
+.hero-secondary-btn {
+  min-width: 240px;
+  min-height: 58px;
+  border-radius: 16px;
+  font-size: 17px;
   font-weight: 900;
-  cursor: pointer;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.32);
-  transition: 0.22s ease;
-  font-family: inherit;
-}
-
-.side-actions .faq-side-btn:hover {
-  transform: translateY(-3px);
-  background: linear-gradient(135deg, #cd171b, #8b090c);
-}
-
-.faq-popup {
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  display: none;
-  align-items: flex-end;
-  justify-content: flex-start;
-  padding: 22px 76px 22px 22px;
-  background: rgba(0,0,0,0.42);
-  backdrop-filter: blur(6px);
-}
-
-.faq-popup.active {
-  display: flex !important;
-}
-
-.faq-popup-panel {
-  position: relative;
-  width: min(420px, calc(100vw - 108px));
-  max-height: min(620px, 88vh);
-  overflow: auto;
-  border-radius: 22px;
-  border: 1px solid rgba(205,23,27,0.42);
-  background:
-    radial-gradient(circle at 86% 12%, rgba(205,23,27,0.2), transparent 34%),
-    linear-gradient(45deg, rgba(255,255,255,0.026) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.026) 75%),
-    linear-gradient(135deg, rgba(12,12,12,0.98), rgba(3,3,3,0.98));
-  background-size: auto, 14px 14px, cover;
-  box-shadow: 0 24px 65px rgba(0,0,0,0.55), 0 0 30px rgba(205,23,27,0.15);
-  padding: 18px;
-}
-
-.faq-popup-close {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  width: 34px;
-  height: 34px;
-  padding: 0;
-  border-radius: 50%;
-  font-size: 22px;
-  line-height: 1;
-}
-
-.faq-popup-title {
-  padding-left: 38px;
-  margin-bottom: 12px;
-}
-
-.faq-popup-title span {
-  color: #cd171b;
-  font-size: 13px;
-  font-weight: 900;
-  letter-spacing: 1px;
-}
-
-.faq-popup-title h2 {
-  margin: 2px 0 0;
-  font-size: 24px;
-  line-height: 1.25;
-}
-
-.faq-popup-list {
-  display: grid;
-  gap: 8px;
-}
-
-.faq-popup-item {
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 14px;
-  background: rgba(255,255,255,0.035);
-  overflow: hidden;
-}
-
-.faq-popup-item summary {
-  list-style: none;
-  cursor: pointer;
-  position: relative;
-  padding: 10px 38px 10px 12px;
-  color: #fff;
-  font-size: 13.5px;
-  font-weight: 900;
-}
-
-.faq-popup-item summary::-webkit-details-marker {
-  display: none;
-}
-
-.faq-popup-item summary::before {
-  content: "+";
-  position: absolute;
-  right: 13px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #cd171b;
-  font-size: 18px;
-  font-weight: 900;
-}
-
-.faq-popup-item[open] summary::before {
-  content: "−";
-}
-
-.faq-popup-item p {
-  margin: 0;
-  padding: 0 38px 10px 12px;
-  color: #cfcfcf;
-  font-size: 12.5px;
-  line-height: 1.7;
-}
-
-.faq-popup-link {
   display: inline-flex;
-  margin: 0 38px 11px 12px;
-  padding: 5px 11px;
-  border-radius: 999px;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 900;
-  background: rgba(205,23,27,0.18);
-  border: 1px solid rgba(205,23,27,0.45);
+  align-items: center;
+  justify-content: center;
+  transition: 0.25s ease;
 }
 
-.watermark-red {
-  color: #cd171b !important;
-  font-weight: 900;
+.hero-main-btn {
+  box-shadow:
+    0 0 26px rgba(205,23,27,0.24),
+    0 16px 36px rgba(0,0,0,0.32);
+}
+
+.hero-main-btn:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 0 36px rgba(205,23,27,0.34),
+    0 20px 42px rgba(0,0,0,0.38);
+}
+
+.hero-secondary-btn {
+  background: rgba(0,0,0,0.42);
+  border: 1px solid rgba(255,255,255,0.18);
+}
+
+.hero-secondary-btn:hover {
+  transform: translateY(-3px);
+  border-color: rgba(205,23,27,0.48);
+  background: rgba(255,255,255,0.06);
 }
 
 @media (max-width: 768px) {
-  .side-actions .faq-side-btn {
-    width: 40px;
-    height: 40px;
-    border-radius: 12px;
-    font-size: 19px;
+  .hero-actions {
+    gap: 10px;
   }
 
-  .faq-popup {
-    padding: 14px 62px 14px 14px;
-  }
-
-  .faq-popup-panel {
-    width: min(390px, calc(100vw - 84px));
-    max-height: 84vh;
-    padding: 16px;
-  }
-
-  .faq-popup-title h2 {
-    font-size: 21px;
+  .hero-main-btn,
+  .hero-secondary-btn {
+    width: 100%;
+    min-width: 100%;
+    min-height: 54px;
+    font-size: 15px;
   }
 }
