@@ -1,5 +1,5 @@
 (function () {
-  const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1EkitrfFU8-UFPJq1Q2Qyxdl2k8gd2BgwfSxrwcUDTiA/edit?usp=sharing';
+  const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQyv1czdgvkdVbLBcJ2vx6c9o7KkPlxaASZO_-rKhCLjOOhkLTqFXiLQCc99fYBo4Eyug-huupbwxlx/pub?output=csv';
 
   const track = document.querySelector('.work-track');
   const prev = document.querySelector('.slider-btn.prev');
