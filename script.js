@@ -262,24 +262,33 @@
   loadWorksFromSheet();
 
   const faqButton = document.querySelector('.faq-side-btn');
-  const faqPopup = document.querySelector('#faq-popup');
+  const faqPopup = document.getElementById('faq-popup');
   const faqClose = document.querySelector('.faq-popup-close');
 
   function openFaqPopup() {
-    if (!faqPopup || !faqButton) return;
+    if (!faqPopup) return;
     faqPopup.classList.add('active');
     faqPopup.setAttribute('aria-hidden', 'false');
-    faqButton.setAttribute('aria-expanded', 'true');
+    if (faqButton) faqButton.setAttribute('aria-expanded', 'true');
   }
 
   function closeFaqPopup() {
-    if (!faqPopup || !faqButton) return;
+    if (!faqPopup) return;
     faqPopup.classList.remove('active');
     faqPopup.setAttribute('aria-hidden', 'true');
-    faqButton.setAttribute('aria-expanded', 'false');
+    if (faqButton) faqButton.setAttribute('aria-expanded', 'false');
   }
 
-  if (faqButton) faqButton.addEventListener('click', openFaqPopup);
+  if (faqButton) {
+    faqButton.addEventListener('click', function () {
+      if (faqPopup && faqPopup.classList.contains('active')) {
+        closeFaqPopup();
+      } else {
+        openFaqPopup();
+      }
+    });
+  }
+
   if (faqClose) faqClose.addEventListener('click', closeFaqPopup);
 
   if (faqPopup) {
@@ -289,12 +298,13 @@
   }
 
   document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape' && faqPopup && faqPopup.classList.contains('active')) closeFaqPopup();
+    if (event.key === 'Escape' && faqPopup && faqPopup.classList.contains('active')) {
+      closeFaqPopup();
+    }
   });
 
   document.querySelectorAll('.faq-popup-link').forEach(function (link) {
     link.addEventListener('click', closeFaqPopup);
   });
-
 
 }());

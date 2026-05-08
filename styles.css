@@ -1650,6 +1650,7 @@ button[type='submit'] {
   backdrop-filter: blur(12px);
   box-shadow: 0 10px 24px rgba(0,0,0,0.32);
   transition: 0.22s ease;
+  font-family: inherit;
 }
 
 .side-actions .faq-side-btn:hover {
@@ -1660,17 +1661,17 @@ button[type='submit'] {
 .faq-popup {
   position: fixed;
   inset: 0;
-  z-index: 70;
+  z-index: 999;
   display: none;
-  justify-content: flex-start;
   align-items: flex-end;
+  justify-content: flex-start;
   padding: 22px 76px 22px 22px;
   background: rgba(0,0,0,0.42);
   backdrop-filter: blur(6px);
 }
 
 .faq-popup.active {
-  display: flex;
+  display: flex !important;
 }
 
 .faq-popup-panel {
