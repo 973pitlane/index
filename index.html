@@ -29,6 +29,7 @@
     <nav>
       <a href="#services">الخدمات</a>
       <a href="#works">نماذج أعمال</a>
+      <a href="#order-steps">طريقة الطلب</a>
       <a class="nav-guarantee" href="#guarantee">الضمان</a>
       <a href="#contact">تواصل</a>
     </nav>
@@ -111,10 +112,101 @@
         <button class="slider-btn prev" type="button" aria-label="الأعمال السابقة">‹</button>
         <div class="work-viewport">
           <div class="work-track">
-            <p class="works-loading">جاري تحميل الأعمال...</p>
+            <button class="work-item" type="button" data-full="assets/work-1.png"><img src="assets/work-1.png" alt="نموذج تصميم سيارة 1" loading="lazy"></button>
+            <button class="work-item" type="button" data-full="assets/work-2.png"><img src="assets/work-2.png" alt="نموذج تصميم سيارة 2" loading="lazy"></button>
+            <button class="work-item" type="button" data-full="assets/work-3.png"><img src="assets/work-3.png" alt="نموذج تصميم سيارة 3" loading="lazy"></button>
+            <button class="work-item" type="button" data-full="assets/work-4.png"><img src="assets/work-4.png" alt="نموذج تصميم سيارة 4" loading="lazy"></button>
+            <button class="work-item" type="button" data-full="assets/work-5.png"><img src="assets/work-5.png" alt="نموذج تصميم سيارة 5" loading="lazy"></button>
+            <button class="work-item" type="button" data-full="assets/work-6.png"><img src="assets/work-6.png" alt="نموذج تصميم سيارة 6" loading="lazy"></button>
+            <button class="work-item" type="button" data-full="assets/work-7.png"><img src="assets/work-7.png" alt="نموذج تصميم سيارة 7" loading="lazy"></button>
+            <button class="work-item" type="button" data-full="assets/work-8.png"><img src="assets/work-8.png" alt="نموذج تصميم سيارة 8" loading="lazy"></button>
+            <button class="work-item" type="button" data-full="assets/work-9.png"><img src="assets/work-9.png" alt="نموذج تصميم سيارة 9" loading="lazy"></button>
           </div>
         </div>
         <button class="slider-btn next" type="button" aria-label="الأعمال التالية">›</button>
+      </div>
+    </section>
+
+
+    <section id="order-steps" class="section order-steps">
+      <div class="section-title">
+        <span>طريقة الطلب</span>
+        <h2>كيف تطلب تصميمك؟</h2>
+        <p>اتبع الخطوات التالية عشان نقدر نجهز تصميم دقيق ومناسب لسيارتك.</p>
+      </div>
+
+      <div class="order-grid">
+        <article class="order-card">
+          <div class="order-number">01</div>
+          <div class="order-icon">🚗</div>
+          <h3>اسم السيارة وسنة الصنع</h3>
+          <p>اكتب اسم السيارة والموديل وسنة الصنع عشان نبدأ بتفاصيل صحيحة.</p>
+        </article>
+
+        <article class="order-card">
+          <div class="order-number">02</div>
+          <div class="order-icon">🧩</div>
+          <h3>الإضافات الخارجية</h3>
+          <p>اذكر أي إضافات خارجية مثل كتات، جناح، جنوط، ليتات، أو أي تعديل بالشكل الخارجي.</p>
+        </article>
+
+        <article class="order-card">
+          <div class="order-number">03</div>
+          <div class="order-icon">📸</div>
+          <h3>صور واضحة من كل الزوايا</h3>
+          <p>ارسل صور السيارة من الأمام، الخلف، الجانبين، وأي زاوية مهمة للتصميم.</p>
+        </article>
+
+        <article class="order-card">
+          <div class="order-number">04</div>
+          <div class="order-icon">🎨</div>
+          <h3>اختيار الستايل</h3>
+          <p>اختار الستايل المطلوب أو اكتب وصف مختصر للشكل اللي تبيه.</p>
+        </article>
+
+        <article class="order-card payment-card">
+          <div class="order-number">05</div>
+          <div class="order-icon">💳</div>
+          <h3>الدفع قبل التنفيذ</h3>
+          <p>بعد تجهيز معلومات الطلب، يتم الدفع عبر BenefitPay أو STC Pay أو التحويل البنكي.</p>
+
+          <div class="payment-methods" aria-label="طرق الدفع">
+            <div class="payment-method">
+              <div>
+                <strong>BenefitPay</strong>
+                <span>34040460</span>
+              </div>
+              <div class="qr-placeholder">QR</div>
+            </div>
+
+            <div class="payment-method">
+              <div>
+                <strong>STC Pay</strong>
+                <span>34040460</span>
+              </div>
+              <div class="qr-placeholder">QR</div>
+            </div>
+
+            <div class="payment-method iban-method">
+              <div>
+                <strong>IBAN</strong>
+                <span id="iban-text">BH28ABCO55116379101001</span>
+              </div>
+              <button class="copy-iban" type="button" data-copy="BH28ABCO55116379101001">نسخ</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="order-card">
+          <div class="order-number">06</div>
+          <div class="order-icon">✅</div>
+          <h3>تم استلام الطلب</h3>
+          <p>بعد تأكيد البيانات والدفع، يتم اعتماد الطلب وبدء تنفيذ التصميم.</p>
+        </article>
+      </div>
+
+      <div class="order-cta">
+        <a class="btn primary" href="https://wa.me/97334040460?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%A8%D9%8A%20%D8%A3%D8%B7%D9%84%D8%A8%20%D8%AA%D8%B5%D9%85%D9%8A%D9%85%20%D8%B3%D9%8A%D8%A7%D8%B1%D8%A9%0A%0A%D8%A7%D8%B3%D9%85%20%D8%A7%D9%84%D8%B3%D9%8A%D8%A7%D8%B1%D8%A9%3A%0A%D8%B3%D9%86%D8%A9%20%D8%A7%D9%84%D8%B5%D9%86%D8%B9%3A%0A%D8%A7%D9%84%D8%A5%D8%B6%D8%A7%D9%81%D8%A7%D8%AA%20%D8%A7%D9%84%D8%AE%D8%A7%D8%B1%D8%AC%D9%8A%D8%A9%3A%0A%D8%A7%D9%84%D8%B3%D8%AA%D8%A7%D9%8A%D9%84%20%D8%A7%D9%84%D9%85%D8%B7%D9%84%D9%88%D8%A8%3A" target="_blank" rel="noopener noreferrer">ابدأ طلبك على واتساب</a>
       </div>
     </section>
 
