@@ -1,6 +1,7 @@
 (function () {
+  const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/1EkitrfFU8-UFPJq1Q2Qyxdl2k8gd2BgwfSxrwcUDTiA/edit?usp=sharing';
+
   const track = document.querySelector('.work-track');
-  const items = Array.from(document.querySelectorAll('.work-item'));
   const prev = document.querySelector('.slider-btn.prev');
   const next = document.querySelector('.slider-btn.next');
   const lightbox = document.querySelector('.lightbox');
@@ -8,9 +9,138 @@
   const closeLightbox = document.querySelector('.lightbox-close');
   const form = document.querySelector('#lead-form form');
   const success = document.getElementById('form-success');
+  const copyIbanButton = document.querySelector('.copy-iban');
 
+  let items = [];
   let index = 0;
   let timer;
+
+  function getDriveId(url) {
+    if (!url) return '';
+    const patterns = [
+      /\/file\/d\/([^/]+)/,
+      /id=([^&]+)/,
+      /\/d\/([^/]+)/
+    ];
+
+    for (const pattern of patterns) {
+      const match = url.match(pattern);
+      if (match && match[1]) return match[1];
+    }
+
+    return '';
+  }
+
+  function toImageUrl(url) {
+    if (!url) return '';
+    if (!url.includes('drive.google.com')) return url;
+
+    const id = getDriveId(url);
+    if (!id) return url;
+
+    return `https://drive.google.com/thumbnail?id=${id}&sz=w2000`;
+  }
+
+  function parseCSV(text) {
+    const rows = [];
+    let current = '';
+    let row = [];
+    let insideQuotes = false;
+
+    for (let i = 0; i < text.length; i++) {
+      const char = text[i];
+      const nextChar = text[i + 1];
+
+      if (char === '"' && nextChar === '"') {
+        current += '"';
+        i++;
+      } else if (char === '"') {
+        insideQuotes = !insideQuotes;
+      } else if (char === ',' && !insideQuotes) {
+        row.push(current.trim());
+        current = '';
+      } else if ((char === '\n' || char === '\r') && !insideQuotes) {
+        if (current || row.length) {
+          row.push(current.trim());
+          rows.push(row);
+          row = [];
+          current = '';
+        }
+        if (char === '\r' && nextChar === '\n') i++;
+      } else {
+        current += char;
+      }
+    }
+
+    if (current || row.length) {
+      row.push(current.trim());
+      rows.push(row);
+    }
+
+    return rows;
+  }
+
+  function renderWorks(works) {
+    if (!track || !works.length) return;
+
+    track.innerHTML = '';
+
+    works.forEach(function (work, i) {
+      const title = work.title || `نموذج تصميم سيارة ${i + 1}`;
+      const image = toImageUrl(work.image);
+      const fullImage = toImageUrl(work.fullImage || work.image);
+
+      if (!image) return;
+
+      const button = document.createElement('button');
+      button.className = 'work-item';
+      button.type = 'button';
+      button.setAttribute('data-full', fullImage);
+
+      const img = document.createElement('img');
+      img.src = image;
+      img.alt = title;
+      img.loading = 'lazy';
+
+      button.appendChild(img);
+      track.appendChild(button);
+    });
+
+    items = Array.from(document.querySelectorAll('.work-item'));
+    bindLightbox();
+    index = 0;
+    updateSlider();
+    startSlider();
+  }
+
+  async function loadWorksFromSheet() {
+    if (!track) return;
+
+    try {
+      const response = await fetch(SHEET_CSV_URL);
+      if (!response.ok) throw new Error('Sheet fetch failed');
+
+      const rows = parseCSV(await response.text());
+      const headers = rows.shift().map(function (h) { return h.trim(); });
+
+      const works = rows.map(function (row) {
+        const item = {};
+        headers.forEach(function (header, i) {
+          item[header] = row[i] || '';
+        });
+        return item;
+      }).filter(function (item) {
+        return item.image;
+      });
+
+      renderWorks(works);
+    } catch (error) {
+      items = Array.from(document.querySelectorAll('.work-item'));
+      bindLightbox();
+      updateSlider();
+      startSlider();
+    }
+  }
 
   function visibleCount() {
     return window.matchMedia('(max-width: 768px)').matches ? 1 : 3;
@@ -22,10 +152,13 @@
 
   function updateSlider() {
     if (!track || !items.length) return;
+
     index = Math.min(index, maxIndex());
+
     const gap = parseFloat(getComputedStyle(track).gap) || 0;
     const itemWidth = items[0].getBoundingClientRect().width;
     const offset = index * (itemWidth + gap);
+
     track.style.transform = `translateX(${offset}px)`;
   }
 
@@ -48,23 +181,21 @@
     if (timer) window.clearInterval(timer);
   }
 
-  if (next && prev) {
-    next.addEventListener('click', function () { goNext(); startSlider(); });
-    prev.addEventListener('click', function () { goPrev(); startSlider(); });
-  }
+  function bindLightbox() {
+    items.forEach(function (item) {
+      item.onclick = function () {
+        const src = item.getAttribute('data-full');
+        const alt = item.querySelector('img')?.getAttribute('alt') || 'صورة العمل بحجم كبير';
 
-  items.forEach(function (item) {
-    item.addEventListener('click', function () {
-      const src = item.getAttribute('data-full');
-      const alt = item.querySelector('img')?.getAttribute('alt') || 'صورة العمل بحجم كبير';
-      lightboxImg.src = src;
-      lightboxImg.alt = alt;
-      lightbox.classList.add('active');
-      lightbox.setAttribute('aria-hidden', 'false');
-      document.body.classList.add('lightbox-open');
-      stopSlider();
+        lightboxImg.src = src;
+        lightboxImg.alt = alt;
+        lightbox.classList.add('active');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('lightbox-open');
+        stopSlider();
+      };
     });
-  });
+  }
 
   function closeModal() {
     lightbox.classList.remove('active');
@@ -74,7 +205,20 @@
     startSlider();
   }
 
+  if (next && prev) {
+    next.addEventListener('click', function () {
+      goNext();
+      startSlider();
+    });
+
+    prev.addEventListener('click', function () {
+      goPrev();
+      startSlider();
+    });
+  }
+
   if (closeLightbox) closeLightbox.addEventListener('click', closeModal);
+
   if (lightbox) {
     lightbox.addEventListener('click', function (event) {
       if (event.target === lightbox) closeModal();
@@ -88,14 +232,9 @@
   if (form && success) {
     form.addEventListener('submit', function () {
       success.hidden = false;
+      success.style.display = 'block';
     });
   }
-
-  window.addEventListener('resize', updateSlider);
-  updateSlider();
-  startSlider();
-
-  const copyIbanButton = document.querySelector('.copy-iban');
 
   if (copyIbanButton) {
     copyIbanButton.addEventListener('click', function () {
@@ -117,5 +256,7 @@
     });
   }
 
+  window.addEventListener('resize', updateSlider);
 
+  loadWorksFromSheet();
 }());
