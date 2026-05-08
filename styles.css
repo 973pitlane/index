@@ -1070,3 +1070,14 @@ button[type='submit'] {
     justify-content: flex-start;
   }
 }
+
+
+/* === Dynamic works loading state === */
+.works-loading {
+  width: 100%;
+  margin: 0;
+  padding: 42px 20px;
+  text-align: center;
+  color: var(--muted);
+  font-weight: 800;
+}
