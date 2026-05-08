@@ -260,4 +260,41 @@
   window.addEventListener('resize', updateSlider);
 
   loadWorksFromSheet();
+
+  const faqButton = document.querySelector('.faq-side-btn');
+  const faqPopup = document.querySelector('#faq-popup');
+  const faqClose = document.querySelector('.faq-popup-close');
+
+  function openFaqPopup() {
+    if (!faqPopup || !faqButton) return;
+    faqPopup.classList.add('active');
+    faqPopup.setAttribute('aria-hidden', 'false');
+    faqButton.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeFaqPopup() {
+    if (!faqPopup || !faqButton) return;
+    faqPopup.classList.remove('active');
+    faqPopup.setAttribute('aria-hidden', 'true');
+    faqButton.setAttribute('aria-expanded', 'false');
+  }
+
+  if (faqButton) faqButton.addEventListener('click', openFaqPopup);
+  if (faqClose) faqClose.addEventListener('click', closeFaqPopup);
+
+  if (faqPopup) {
+    faqPopup.addEventListener('click', function (event) {
+      if (event.target === faqPopup) closeFaqPopup();
+    });
+  }
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && faqPopup && faqPopup.classList.contains('active')) closeFaqPopup();
+  });
+
+  document.querySelectorAll('.faq-popup-link').forEach(function (link) {
+    link.addEventListener('click', closeFaqPopup);
+  });
+
+
 }());

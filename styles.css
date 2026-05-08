@@ -1634,75 +1634,144 @@ button[type='submit'] {
 }
 
 
-/* ===== Compact FAQ Section ===== */
-.faq-section {
-  width: min(900px, 92vw);
-  padding-top: 18px !important;
-  padding-bottom: 18px !important;
+/* ===== FAQ Floating Popup ===== */
+.side-actions .faq-side-btn {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(205,23,27,0.6);
+  border-radius: 15px;
+  background: rgba(8,8,8,0.88);
+  color: #fff;
+  font-size: 22px;
+  font-weight: 900;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.32);
+  transition: 0.22s ease;
 }
 
-.faq-section .compact-title {
-  margin-bottom: 10px !important;
+.side-actions .faq-side-btn:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #cd171b, #8b090c);
 }
 
-.faq-list {
+.faq-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: none;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding: 22px 76px 22px 22px;
+  background: rgba(0,0,0,0.42);
+  backdrop-filter: blur(6px);
+}
+
+.faq-popup.active {
+  display: flex;
+}
+
+.faq-popup-panel {
+  position: relative;
+  width: min(420px, calc(100vw - 108px));
+  max-height: min(620px, 88vh);
+  overflow: auto;
+  border-radius: 22px;
+  border: 1px solid rgba(205,23,27,0.42);
+  background:
+    radial-gradient(circle at 86% 12%, rgba(205,23,27,0.2), transparent 34%),
+    linear-gradient(45deg, rgba(255,255,255,0.026) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.026) 75%),
+    linear-gradient(135deg, rgba(12,12,12,0.98), rgba(3,3,3,0.98));
+  background-size: auto, 14px 14px, cover;
+  box-shadow: 0 24px 65px rgba(0,0,0,0.55), 0 0 30px rgba(205,23,27,0.15);
+  padding: 18px;
+}
+
+.faq-popup-close {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.faq-popup-title {
+  padding-left: 38px;
+  margin-bottom: 12px;
+}
+
+.faq-popup-title span {
+  color: #cd171b;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.faq-popup-title h2 {
+  margin: 2px 0 0;
+  font-size: 24px;
+  line-height: 1.25;
+}
+
+.faq-popup-list {
   display: grid;
   gap: 8px;
 }
 
-.faq-item {
-  border: 1px solid rgba(205,23,27,0.28);
+.faq-popup-item {
+  border: 1px solid rgba(255,255,255,0.08);
   border-radius: 14px;
-  background:
-    linear-gradient(45deg, rgba(255,255,255,0.025) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.025) 75%),
-    linear-gradient(135deg, rgba(255,255,255,0.035), rgba(205,23,27,0.045)),
-    #080808;
-  background-size: 14px 14px, cover, cover;
+  background: rgba(255,255,255,0.035);
   overflow: hidden;
 }
 
-.faq-item summary {
+.faq-popup-item summary {
   list-style: none;
   cursor: pointer;
   position: relative;
-  padding: 11px 42px 11px 14px;
+  padding: 10px 38px 10px 12px;
   color: #fff;
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 900;
 }
 
-.faq-item summary::-webkit-details-marker {
+.faq-popup-item summary::-webkit-details-marker {
   display: none;
 }
 
-.faq-item summary::before {
+.faq-popup-item summary::before {
   content: "+";
   position: absolute;
-  right: 14px;
+  right: 13px;
   top: 50%;
   transform: translateY(-50%);
   color: #cd171b;
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 900;
-  line-height: 1;
 }
 
-.faq-item[open] summary::before {
+.faq-popup-item[open] summary::before {
   content: "−";
 }
 
-.faq-item p {
+.faq-popup-item p {
   margin: 0;
-  padding: 0 42px 12px 14px;
+  padding: 0 38px 10px 12px;
   color: #cfcfcf;
-  font-size: 13px;
-  line-height: 1.75;
+  font-size: 12.5px;
+  line-height: 1.7;
 }
 
-.faq-link {
+.faq-popup-link {
   display: inline-flex;
-  margin: 0 42px 13px 14px;
-  padding: 6px 12px;
+  margin: 0 38px 11px 12px;
+  padding: 5px 11px;
   border-radius: 999px;
   color: #fff;
   font-size: 12px;
@@ -1717,18 +1786,24 @@ button[type='submit'] {
 }
 
 @media (max-width: 768px) {
-  .faq-section {
-    padding-top: 14px !important;
-    padding-bottom: 14px !important;
+  .side-actions .faq-side-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    font-size: 19px;
   }
 
-  .faq-item summary {
-    font-size: 13.5px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+  .faq-popup {
+    padding: 14px 62px 14px 14px;
   }
 
-  .faq-item p {
-    font-size: 12.5px;
+  .faq-popup-panel {
+    width: min(390px, calc(100vw - 84px));
+    max-height: 84vh;
+    padding: 16px;
+  }
+
+  .faq-popup-title h2 {
+    font-size: 21px;
   }
 }
