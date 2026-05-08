@@ -1397,3 +1397,139 @@ button[type='submit'] {
     grid-column: span 1;
   }
 }
+
+
+/* ===== Final Compact Order Section Override ===== */
+.order-steps.section {
+  padding-top: 22px !important;
+  padding-bottom: 22px !important;
+}
+
+.order-steps .section-title {
+  margin-bottom: 14px !important;
+}
+
+.order-steps .section-title h2 {
+  margin-bottom: 2px !important;
+}
+
+.order-steps .section-title p {
+  margin: 4px auto 0 !important;
+  font-size: 14px !important;
+}
+
+.order-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+  align-items: stretch !important;
+}
+
+.order-card {
+  min-height: 155px !important;
+  padding: 15px 16px !important;
+  border-radius: 17px !important;
+}
+
+.order-icon {
+  width: 40px !important;
+  height: 40px !important;
+  margin-bottom: 7px !important;
+  border-radius: 13px !important;
+  font-size: 19px !important;
+}
+
+.order-number {
+  top: 10px !important;
+  left: 12px !important;
+  font-size: 24px !important;
+}
+
+.order-card h3 {
+  font-size: 16.5px !important;
+  line-height: 1.35 !important;
+  margin: 0 0 4px !important;
+}
+
+.order-card p {
+  font-size: 13px !important;
+  line-height: 1.55 !important;
+}
+
+.payment-card {
+  grid-column: span 2 !important;
+  min-height: 170px !important;
+}
+
+.payment-card .order-icon {
+  margin-bottom: 6px !important;
+}
+
+.payment-methods {
+  margin-top: 8px !important;
+  gap: 7px !important;
+}
+
+.payment-method {
+  min-height: 48px !important;
+  padding: 7px 9px !important;
+  border-radius: 12px !important;
+}
+
+.payment-method strong {
+  font-size: 12.5px !important;
+}
+
+.payment-method span {
+  font-size: 12px !important;
+}
+
+.qr-placeholder {
+  width: 32px !important;
+  height: 32px !important;
+  flex: 0 0 32px !important;
+  border-radius: 9px !important;
+  font-size: 8px !important;
+}
+
+.copy-iban {
+  min-width: 54px !important;
+  padding: 5px 8px !important;
+  border-radius: 10px !important;
+  font-size: 11.5px !important;
+}
+
+.order-cta {
+  margin-top: 12px !important;
+}
+
+@media (max-width: 900px) {
+  .order-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .payment-card {
+    grid-column: span 2 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .order-steps.section {
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+  }
+
+  .order-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .order-card,
+  .payment-card {
+    min-height: auto !important;
+    grid-column: span 1 !important;
+  }
+
+  .payment-methods {
+    grid-template-columns: 1fr !important;
+  }
+}

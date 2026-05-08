@@ -2,6 +2,7 @@
   const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQyv1czdgvkdVbLBcJ2vx6c9o7KkPlxaASZO_-rKhCLjOOhkLTqFXiLQCc99fYBo4Eyug-huupbwxlx/pub?output=csv';
 
   const track = document.querySelector('.work-track');
+  if (track) track.innerHTML = '';
   const prev = document.querySelector('.slider-btn.prev');
   const next = document.querySelector('.slider-btn.next');
   const lightbox = document.querySelector('.lightbox');
