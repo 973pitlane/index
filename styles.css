@@ -1297,3 +1297,103 @@ button[type='submit'] {
     text-align: center;
   }
 }
+/* ===== Compact Order Section Fix ===== */
+
+.order-steps {
+  padding-top: 28px;
+  padding-bottom: 28px;
+}
+
+.order-grid {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.order-card {
+  min-height: 190px;
+  padding: 18px 18px;
+  border-radius: 18px;
+}
+
+.order-icon {
+  width: 46px;
+  height: 46px;
+  font-size: 22px;
+  border-radius: 14px;
+  margin-bottom: 10px;
+}
+
+.order-number {
+  top: 12px;
+  left: 14px;
+  font-size: 28px;
+}
+
+.order-card h3 {
+  font-size: 18px;
+  margin-bottom: 6px;
+}
+
+.order-card p {
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.payment-card {
+  grid-column: span 2;
+  min-height: 210px;
+}
+
+.payment-methods {
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.payment-method {
+  min-height: 58px;
+  padding: 9px 10px;
+  border-radius: 13px;
+}
+
+.qr-placeholder {
+  width: 38px;
+  height: 38px;
+  flex-basis: 38px;
+  border-radius: 10px;
+  font-size: 10px;
+}
+
+.copy-iban {
+  padding: 7px 10px;
+  font-size: 12px;
+}
+
+.order-cta {
+  margin-top: 14px;
+}
+
+@media (max-width: 900px) {
+  .order-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .payment-card {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .order-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .order-card,
+  .payment-card {
+    min-height: auto;
+  }
+
+  .payment-card {
+    grid-column: span 1;
+  }
+}
