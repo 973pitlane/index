@@ -308,4 +308,14 @@ document.querySelectorAll('a[href*="wa.me/97334040460"]').forEach(function (link
     trackEvent('whatsapp_click', link.textContent.trim() || 'whatsapp_link');
   });
 });
+  document.querySelectorAll('a[href*="DIGITAL%20PACK%2001"]').forEach(function (link) {
+  link.addEventListener('click', function () {
+    if (typeof gtag !== 'function') return;
+
+    gtag('event', 'whatsapp_click_DP1', {
+      event_category: 'package_click',
+      event_label: 'DIGITAL PACK 01'
+    });
+  });
+});
 }());
