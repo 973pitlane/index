@@ -294,5 +294,18 @@
   });
 
   document.querySelectorAll('.faq-popup-link').forEach(function (link) { link.addEventListener('click', closeFaqPopup); });
+function trackEvent(eventName, eventLabel) {
+  if (typeof gtag !== 'function') return;
 
+  gtag('event', eventName, {
+    event_category: 'site_click',
+    event_label: eventLabel
+  });
+}
+
+document.querySelectorAll('a[href*="wa.me/97334040460"]').forEach(function (link) {
+  link.addEventListener('click', function () {
+    trackEvent('whatsapp_click', link.textContent.trim() || 'whatsapp_link');
+  });
+});
 }());
